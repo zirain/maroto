@@ -272,12 +272,14 @@ func TestPageNumber_AppendMap(t *testing.T) {
 	t.Run("when append map, should append correctly", func(t *testing.T) {
 		// Arrange
 		pageNumber := &props.PageNumber{
-			Pattern: "pattern",
-			Place:   props.Bottom,
-			Color:   &props.RedColor,
-			Size:    15,
-			Style:   fontstyle.Bold,
-			Family:  fontfamily.Helvetica,
+			Pattern:    "pattern",
+			Place:      props.Bottom,
+			Color:      &props.RedColor,
+			Size:       15,
+			Style:      fontstyle.Bold,
+			Family:     fontfamily.Helvetica,
+			MarginTop:  10.0,
+			MarginLeft: 10.0,
 		}
 
 		m := make(map[string]interface{})
@@ -292,5 +294,7 @@ func TestPageNumber_AppendMap(t *testing.T) {
 		assert.Equal(t, fontstyle.Bold, m["page_number_style"])
 		assert.Equal(t, 15.0, m["page_number_size"])
 		assert.Equal(t, "RGB(255, 0, 0)", m["page_number_color"])
+		assert.Equal(t, 10.0, m["page_number_margin_top"])
+		assert.Equal(t, 10.0, m["page_number_margin_left"])
 	})
 }
